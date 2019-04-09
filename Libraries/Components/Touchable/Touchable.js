@@ -326,8 +326,14 @@ const TouchableMixin = {
       if (myTag === evt.tag) {
         if (evt.eventType === 'focus') {
           cmp.touchableHandleFocus(evt);
+          if (cmp.touchableHandleActivePressIn) {
+            cmp.touchableHandleActivePressIn(evt);
+          }
         } else if (evt.eventType === 'blur') {
           cmp.touchableHandleBlur(evt);
+          if (cmp.touchableHandleActivePressOut) {
+            cmp.touchableHandleActivePressOut(evt);
+          }
         } else if (evt.eventType === 'select') {
           cmp.touchableHandlePress &&
             !cmp.props.disabled &&
